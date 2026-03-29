@@ -1,6 +1,72 @@
+import { useState, useEffect } from 'react'
 import './App.css'
 
+const OFFERS = [
+  {
+    title: 'Achtsamkeit',
+    description: 'Entspannungseinheiten wie Indian Balance® & Yin Yoga',
+    imageLabel: '[Stimmungsbild: Yoga / Wellness]'
+  },
+  {
+    title: 'Aktivität',
+    description: 'Morgendliche Sporteinheiten in der Natur für einen aktiven Start in den Tag',
+    imageLabel: '[Stimmungsbild: Sport / Natur]'
+  },
+  {
+    title: 'Natur',
+    description: 'Geführte Wanderungen in der Umgebung',
+    imageLabel: '[Stimmungsbild: Wanderung / Aussicht]'
+  },
+  {
+    title: 'Region',
+    description: 'Geführte Radtouren durch die Region und den Bliesgau',
+    imageLabel: '[Stimmungsbild: Radfahren / Bliesgau]'
+  }
+]
+
+const GALLERY_IMAGES = [
+  '[Galerie Bild 1: Studio Außenansicht]',
+  '[Galerie Bild 2: Lehmputz Detail]',
+  '[Galerie Bild 3: Fensterfront]',
+  '[Galerie Bild 4: Minimalistische Einrichtung]',
+  '[Galerie Bild 5: Blick ins Grüne]',
+  '[Galerie Bild 6: Gemütliche Ecke]',
+  '[Galerie Bild 7: Bad Details]',
+  '[Galerie Bild 8: Sonnenlicht im Raum]',
+  '[Galerie Bild 9: Lokale Flora]',
+  '[Galerie Bild 10: Abendstimmung]'
+]
+
 function App() {
+  const [currentOffer, setCurrentOffer] = useState(0)
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+  const nextOffer = () => setCurrentOffer((prev) => (prev + 1) % OFFERS.length)
+  const prevOffer = () => setCurrentOffer((prev) => (prev - 1 + OFFERS.length) % OFFERS.length)
+
+  const openGallery = (index = 0) => {
+    setActiveImageIndex(index)
+    setIsGalleryOpen(true)
+    document.body.style.overflow = 'hidden'
+  }
+
+  const closeGallery = () => {
+    setIsGalleryOpen(false)
+    document.body.style.overflow = 'unset'
+  }
+
+  const nextImage = () => setActiveImageIndex((prev) => (prev + 1) % GALLERY_IMAGES.length)
+  const prevImage = () => setActiveImageIndex((prev) => (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextOffer()
+    }, 5000) // Alle 5 Sekunden wechseln
+
+    return () => clearInterval(interval)
+  }, [currentOffer]) // Abhängigkeit von currentOffer stellt sicher, dass das Intervall nach jedem manuellen Wechsel zurückgesetzt wird
+
   return (
     <div className="container">
       <header className="hero-section">
@@ -22,8 +88,8 @@ function App() {
 
       <main>
         <section id="beschreibung" className="section">
+          <h2>🌿 Beschreibung</h2>
           <div className="section-content">
-            <h2>🌿 Beschreibung</h2>
             <p>
               Willkommen im <strong>Wiesenatelier</strong> &ndash; deinem naturnahen R&uuml;ckzugsort im idyllischen Dorf Auersmacher.
               Das lichtdurchflutete Studio verbindet nat&uuml;rliche Materialien mit moderner, reduzierter Gestaltung.
@@ -36,24 +102,26 @@ function App() {
             </p>
             <p>
               Auersmacher wurde als einer der besonders schönen Orte in Deutschland ausgezeichnet und liegt zudem in
-              unmittelbarer Nähe zu Saarbrücken, Saargemünd und der französischen Grenze – ideal für Ausflüge,
-              kulinarische Entdeckungen und Naturerlebnisse.
-            </p>
-            <p>
-              Direkt in der Umgebung verläuft der Jakobsweg, der zu ruhigen Spaziergängen einlädt.
-              Entlang der Wege findest du zudem die charakteristischen silbernen Sterne im Asphalt –
-              den sogenannten <em>Chemin des Étoiles</em>, ein besonderer und inspirierender Abschnitt durch die Landschaft.
+              unmittelbarer Nähe zu Saarbrücken, Saargemünd und der französischen Grenze.
             </p>
           </div>
-          <div className="placeholder-gallery">
-            <div className="placeholder-img">[Galerie Bild 1]</div>
-            <div className="placeholder-img">[Galerie Bild 2]</div>
+          <div className="tile-gallery">
+            {GALLERY_IMAGES.slice(0, 2).map((img, idx) => (
+              <div key={idx} className="placeholder-img tile-img" onClick={() => openGallery(idx)}>
+                {img}
+              </div>
+            ))}
+            {GALLERY_IMAGES.length > 2 && (
+              <div className="placeholder-img tile-img more-tile" onClick={() => openGallery(2)}>
+                <span>+{GALLERY_IMAGES.length - 2} weitere</span>
+              </div>
+            )}
           </div>
         </section>
 
-        <section id="ausstattung" className="section accent-bg reverse">
+        <section id="ausstattung" className="section reverse">
+          <h2>🌿 Das erwartet dich</h2>
           <div className="section-content">
-            <h2>🌿 Das erwartet dich</h2>
             <ul className="feature-list">
               <li>Lichtdurchflutetes Studio mit großzügigen Fenstern</li>
               <li>Ruhige Lage am Feldrand</li>
@@ -67,39 +135,51 @@ function App() {
           </div>
         </section>
 
-        <section id="zusatz" className="section">
-          <div className="section-content">
-            <h2>🌿 Zusatzangebote <span className="small-note">(auf Anfrage)</span></h2>
-            <p>
+        <section id="zusatz" className="section accent-bg">
+          <h2>🌿 Zusatzangebote <span className="small-note">(auf Anfrage)</span></h2>
+          <div className="carousel-wrapper">
+            <p className="carousel-intro">
               Für alle, die ihren Aufenthalt noch bewusster gestalten möchten, bieten wir auf Wunsch verschiedene achtsame Erlebnisse an:
             </p>
-            <div className="offer-grid">
-              <div className="offer-item">
-                <h3>Achtsamkeit</h3>
-                <p>Entspannungseinheiten wie Indian Balance® & Yin Yoga</p>
+            <div className="carousel-container">
+              <div className="carousel-inner" style={{ transform: `translateX(-${currentOffer * 100}%)` }}>
+                {OFFERS.map((offer, index) => (
+                  <div key={index} className="carousel-item">
+                    <div className="placeholder-img carousel-img">
+                      {offer.imageLabel}
+                    </div>
+                    <div className="carousel-overlay">
+                      <h3>{offer.title}</h3>
+                      <p>{offer.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="offer-item">
-                <h3>Aktivität</h3>
-                <p>Morgendliche Sporteinheiten in der Natur für einen aktiven Start in den Tag</p>
-              </div>
-              <div className="offer-item">
-                <h3>Natur</h3>
-                <p>Geführte Wanderungen in der Umgebung</p>
-              </div>
-              <div className="offer-item">
-                <h3>Region</h3>
-                <p>Geführte Radtouren durch die Region und den Bliesgau</p>
+              
+              <button className="carousel-control prev" onClick={prevOffer} aria-label="Vorheriges Angebot">
+                ‹
+              </button>
+              <button className="carousel-control next" onClick={nextOffer} aria-label="Nächstes Angebot">
+                ›
+              </button>
+
+              <div className="carousel-dots">
+                {OFFERS.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`dot ${index === currentOffer ? 'active' : ''}`}
+                    onClick={() => setCurrentOffer(index)}
+                    aria-label={`Gehe zu Angebot ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
-          <div className="placeholder-img gallery-large">
-            [Stimmungsbild: Wellness / Achtsamkeit / Aktivität]
-          </div>
         </section>
 
-        <section id="lage" className="section lage-section reverse">
+        <section id="lage" className="section lage-section">
+          <h2>🌍 Perfekte Lage für Entdeckungen</h2>
           <div className="section-content">
-            <h2>🌍 Perfekte Lage für Entdeckungen</h2>
             <ul className="lage-list">
               <li>In der N&auml;he von Saarbr&uuml;cken (ca.&nbsp;15&nbsp;Minuten Fahrtzeit mit dem Auto, 30&nbsp;Min &Ouml;PNV)</li>
               <li>N&auml;he zu Saargem&uuml;nd&nbsp;/&nbsp;Frankreich (8&nbsp;Minuten Fahrt mit dem Auto, 10&nbsp;mit&nbsp;der&nbsp;Bahn)</li>
@@ -130,6 +210,37 @@ function App() {
       <footer className="footer">
         <p>© {new Date().getFullYear()} Wiesenatelier Auersmacher</p>
       </footer>
+
+      {isGalleryOpen && (
+        <div className="modal-overlay" onClick={closeGallery}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeGallery}>&times;</button>
+            <div className="modal-viewer">
+              <button className="modal-nav prev" onClick={prevImage}>‹</button>
+              <div className="placeholder-img modal-img">
+                {GALLERY_IMAGES[activeImageIndex]}
+              </div>
+              <button className="modal-nav next" onClick={nextImage}>›</button>
+            </div>
+            <div className="modal-info">
+              Bild {activeImageIndex + 1} von {GALLERY_IMAGES.length}
+            </div>
+            <div className="modal-thumbnails">
+              {GALLERY_IMAGES.map((img, idx) => (
+                <div
+                  key={idx}
+                  className={`thumb ${idx === activeImageIndex ? 'active' : ''}`}
+                  onClick={() => setActiveImageIndex(idx)}
+                >
+                  <div className="placeholder-img thumb-placeholder">
+                    {idx + 1}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
