@@ -1,3 +1,5 @@
+import { IMPRESSUM } from '../constants'
+
 interface ImpressumProps {
   onClose: () => void
 }
@@ -13,26 +15,26 @@ export const Impressum = ({ onClose }: ImpressumProps) => {
           <section>
             <h3>Angaben gemäß § 5 TMG</h3>
             <p>
-              [Vorname Nachname]<br />
-              [Straße Hausnummer]<br />
-              [PLZ Ort]
+              {IMPRESSUM.owner}<br />
+              {IMPRESSUM.address}<br />
+              {IMPRESSUM.city}
             </p>
           </section>
 
           <section>
             <h3>Kontakt</h3>
             <p>
-              Telefon: [Telefonnummer]<br />
-              E-Mail: [E-Mail-Adresse]
+              Telefon: {IMPRESSUM.phone}<br />
+              E-Mail: {IMPRESSUM.email}
             </p>
           </section>
 
           <section>
             <h3>Redaktionell verantwortlich</h3>
             <p>
-              [Vorname Nachname]<br />
-              [Straße Hausnummer]<br />
-              [PLZ Ort]
+              {IMPRESSUM.owner}<br />
+              {IMPRESSUM.address}<br />
+              {IMPRESSUM.city}
             </p>
           </section>
 

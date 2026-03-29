@@ -1,18 +1,24 @@
+import { LOCATION } from '../constants'
+
 export const Location = () => {
+  const isPlaceholder = LOCATION.imageLabel.startsWith('[') && LOCATION.imageLabel.endsWith(']')
+
   return (
     <section id="lage" className="section lage-section">
-      <h2>🌍 Perfekte Lage für Entdeckungen</h2>
+      <h2>{LOCATION.title}</h2>
       <div className="section-content">
         <ul className="lage-list">
-          <li>In der N&auml;he von Saarbr&uuml;cken (ca.&nbsp;15&nbsp;Minuten Fahrtzeit mit dem Auto, 30&nbsp;Min &Ouml;PNV)</li>
-          <li>N&auml;he zu Saargem&uuml;nd&nbsp;/&nbsp;Frankreich (8&nbsp;Minuten Fahrt mit dem Auto, 10&nbsp;mit&nbsp;der&nbsp;Bahn)</li>
-          <li>Zugang zu Rad- und Wanderwegen</li>
-          <li>Direkt im Biosphärenreservat Bliesgau</li>
-          <li>Region mit Natur, Kultur und Genuss</li>
+          {LOCATION.list.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
         </ul>
       </div>
-      <div className="placeholder-img map-placeholder">
-        [Karte / Umgebungsbild]
+      <div className={`location-img-container ${isPlaceholder ? 'placeholder-img map-placeholder' : 'location-img-real'}`}>
+        {isPlaceholder ? (
+          LOCATION.imageLabel
+        ) : (
+          <img src={LOCATION.imageLabel} alt={LOCATION.title} />
+        )}
       </div>
     </section>
   )

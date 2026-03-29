@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { CLOSING } from '../constants'
 
 export const Closing = () => {
+  const isPlaceholder = CLOSING.imageLabel.startsWith('[') && CLOSING.imageLabel.endsWith(']')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,21 +37,24 @@ export const Closing = () => {
   return (
     <section className="closing-section">
       <div className="closing-card">
-        <h2>💛 Der besondere Ort</h2>
+        <h2>{CLOSING.title}</h2>
         <p>
-          Ein Aufenthalt im Wiesenatelier verbindet stilvolles Wohnen mit der Ruhe der Natur und den
-          Möglichkeiten einer vielseitigen Region – ein Ort, an dem du ankommst, durchatmest und neue Energie findest.
+          {CLOSING.description}
         </p>
         
-        <div className="placeholder-img footer-placeholder">
-          [Stimmungsbild: Sonnenuntergang / Bliesgau]
+        <div className={`closing-img-container ${isPlaceholder ? 'placeholder-img footer-placeholder' : 'closing-img-real'}`}>
+          {isPlaceholder ? (
+            CLOSING.imageLabel
+          ) : (
+            <img src={CLOSING.imageLabel} alt={CLOSING.title} />
+          )}
         </div>
 
         <div className="contact-form-container">
-          <h3>Schreib uns eine Nachricht</h3>
+          <h3>{CLOSING.formTitle}</h3>
           {submitted ? (
             <div className="form-success">
-              Vielen Dank! Deine Nachricht wurde (simuliert) gesendet.
+              {CLOSING.formSuccess}
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="contact-form">

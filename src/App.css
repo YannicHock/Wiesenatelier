@@ -26,6 +26,24 @@ html, body {
   margin-top: 60px;
 }
 
+.hero-img-container {
+  width: 100%;
+  margin-top: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-img {
+  width: 100%;
+  height: 75vh;
+  max-height: 800px;
+  object-fit: cover;
+  display: block;
+}
+
 .anchor-nav {
   position: sticky;
   top: 0;
@@ -166,6 +184,28 @@ html, body {
   box-shadow: 0 15px 30px var(--black-alpha-10);
 }
 
+.tile-img-real, .tile-img-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.tile-img-real:hover, .tile-img-container:hover {
+  transform: translateY(-5px);
+  filter: brightness(1.05);
+  box-shadow: 0 15px 30px var(--black-alpha-10);
+}
+
+.tile-img-real img, .tile-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .tile-img:first-child {
   grid-row: span 2;
   font-size: 0.9rem;
@@ -256,6 +296,22 @@ html, body {
   font-size: 1.5rem;
 }
 
+.modal-img-real {
+  flex-grow: 1;
+  max-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-img-real img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
 .modal-nav {
   background: var(--white-alpha-10);
   border: none;
@@ -312,10 +368,39 @@ html, body {
   font-size: 0.8rem;
 }
 
+.thumb-real, .thumb-content {
+  width: 100%;
+  height: 100%;
+}
+
+.thumb-real img, .thumb-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .gallery-large {
   aspect-ratio: 16 / 9;
   max-height: 500px;
   object-fit: cover;
+}
+
+.features-img-real, .features-img-container,
+.location-img-real, .location-img-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.features-img-real img, .features-img-container img,
+.location-img-real img, .location-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .feature-list, .lage-list {
@@ -415,6 +500,18 @@ html, body {
   height: 100%;
   border-radius: 0;
   background: var(--border);
+}
+
+.carousel-img-real, .carousel-img-container {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-img-real img, .carousel-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .carousel-overlay {
@@ -539,6 +636,21 @@ html, body {
 .footer-placeholder {
   height: 300px;
   margin-top: 40px;
+}
+
+.closing-img-real, .closing-img-container {
+  width: 100%;
+  height: 300px;
+  margin-top: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.closing-img-real img, .closing-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Contact Form Styles */

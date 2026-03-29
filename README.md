@@ -1,73 +1,30 @@
-# React + TypeScript + Vite
+# Wiesenatelier Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Diese Website ist für das Wiesenatelier in Auersmacher erstellt.
 
-Currently, two official plugins are available:
+## 🛠 Inhalte anpassen (Texte & Bilder)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Um die Texte und Bilder auf dieser Seite zu ändern, finden sich alle Inhalte befinden sich an einer zentralen Stelle.
 
-## React Compiler
+### So änderst du Inhalte:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Öffne die Datei `src/constants.ts` in einem Texteditor deiner Wahl.
+2. Dort findest du verschiedene Abschnitte für die einzelnen Bereiche der Website (Hero, Beschreibung, Ausstattung, etc.).
+3. **Texte ändern:** Ersetze einfach den Text zwischen den Anführungszeichen (z.B. `'Mein neuer Titel'`).
+4. **Fettgedruckter Text:** In der Beschreibung kannst du Text **fett** machen, indem du ihn in doppelte Sternchen einschließt: `**dieser Text wird fett**`.
+5. **Listen:** Bei Ausstattung oder Lage kannst du Einträge in den Listen (eckige Klammern `[]`) hinzufügen oder ändern. Achte darauf, dass jeder Eintrag in Anführungszeichen steht und durch ein Komma getrennt ist.
+6. **Bilder:** Aktuell sind Bild-Platzhalter definiert (z.B. `[Hero Bild: ...]`). In den Platzhaltern findest du nun auch eine Empfehlung für die **ideale Auflösung** (z.B. `1920x1080px`). Sobald echte Bilder vorhanden sind, können hier die Dateipfade (z.B. `/images/mein-bild.jpg`) eingetragen werden. Die Bilder sollten im Ordner `public/` abgelegt werden.
+7. **Impressum:** Vergiss nicht, deine Daten im Abschnitt `IMPRESSUM` am Ende der Datei einzutragen.
 
-## Expanding the ESLint configuration
+### Entwicklung & Vorschau
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Wenn du die Änderungen lokal testen möchtest:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. Installiere Node.js (falls noch nicht geschehen).
+2. Führe `npm install` im Hauptverzeichnis aus.
+3. Starte den Entwicklungsserver mit `npm run dev`.
+4. Öffne die angezeigte URL (meist http://localhost:5173) in deinem Browser.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Technische Details (für Entwickler)

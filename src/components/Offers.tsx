@@ -24,17 +24,24 @@ export const Offers = () => {
         </p>
         <div className="carousel-container">
           <div className="carousel-inner" style={{ transform: `translateX(-${currentOffer * 100}%)` }}>
-            {OFFERS.map((offer, index) => (
-              <div key={index} className="carousel-item">
-                <div className="placeholder-img carousel-img">
-                  {offer.imageLabel}
+            {OFFERS.map((offer, index) => {
+              const isPlaceholder = offer.imageLabel.startsWith('[') && offer.imageLabel.endsWith(']')
+              return (
+                <div key={index} className="carousel-item">
+                  <div className={`carousel-img-container ${isPlaceholder ? 'placeholder-img carousel-img' : 'carousel-img-real'}`}>
+                    {isPlaceholder ? (
+                      offer.imageLabel
+                    ) : (
+                      <img src={offer.imageLabel} alt={offer.title} />
+                    )}
+                  </div>
+                  <div className="carousel-overlay">
+                    <h3>{offer.title}</h3>
+                    <p>{offer.description}</p>
+                  </div>
                 </div>
-                <div className="carousel-overlay">
-                  <h3>{offer.title}</h3>
-                  <p>{offer.description}</p>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
           
           <button className="carousel-control prev" onClick={prevOffer} aria-label="Vorheriges Angebot">
