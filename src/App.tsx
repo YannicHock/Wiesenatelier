@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { GALLERY_IMAGES } from './constants'
 import { Hero } from './components/Hero'
+import { FloralBackground } from './components/FloralBackground'
 import { Navbar } from './components/Navbar'
 import { Description } from './components/Description'
 import { Features } from './components/Features'
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <div className="container">
+      <FloralBackground />
       <Hero />
       <Navbar />
 
