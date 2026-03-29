@@ -1,5 +1,11 @@
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .container {
   padding: 0 20px;
+  width: 100%;
 }
 
 .hero-section {
@@ -383,6 +389,7 @@
   min-width: 100%;
   height: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .carousel-img {
@@ -613,28 +620,40 @@
     grid-row: unset;
   }
 
-  .gallery-large, .map-placeholder {
-    height: 300px;
-    min-height: unset;
+  .section:nth-of-type(even),
+  .section.accent-bg {
+    width: 100%;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 60px 20px;
+    box-sizing: border-box;
   }
 
-  .tile-gallery {
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    gap: 20px;
-  }
-  
   .section-content {
+    width: 100%;
     max-width: 100%;
     text-align: center;
+    box-sizing: border-box;
   }
   
   .feature-list, .lage-list {
     text-align: left;
-    display: inline-block;
+    display: block;
+    margin: 0 auto;
     max-width: 100%;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+
+  .feature-list li, .lage-list li {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .anchor-nav {
@@ -652,6 +671,188 @@
   
   .closing-card {
     padding: 40px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 80px 0 40px;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+
+  .hero-placeholder {
+    height: 50vh;
+    margin-top: 40px;
+  }
+
+  .anchor-nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 12px 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    position: sticky;
+    top: 0;
+    margin-bottom: 20px;
+    width: auto;
+  }
+
+  .anchor-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .anchor-nav a {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .section {
+    padding: 60px 0;
+    gap: 25px;
+  }
+
+  .section:nth-of-type(even),
+  .section.accent-bg {
+    padding: 60px 20px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  .section-content {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .tile-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    aspect-ratio: auto;
+    height: auto;
+    gap: 15px;
+  }
+
+  .tile-gallery .tile-img:nth-child(1) {
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .tile-img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .carousel-wrapper {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .carousel-intro {
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .carousel-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    min-height: 400px;
+    height: auto;
+    background: var(--border);
+  }
+
+  .carousel-overlay {
+    padding: 30px 15px 50px;
+    box-sizing: border-box;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, var(--black-alpha-80) 30%);
+  }
+
+  .carousel-overlay h3 {
+    font-size: 1.4rem;
+  }
+
+  .carousel-overlay p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .carousel-control.prev { left: 10px; }
+  .carousel-control.next { right: 10px; }
+
+  .impressum-modal {
+    padding: 40px 20px;
+    width: 95%;
+  }
+
+  .footer {
+    padding: 40px 0;
+  }
+
+  /* Modal Mobile Optimierung */
+  .modal-content {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .modal-viewer {
+    width: 100%;
+    position: relative;
+  }
+
+  .modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 10;
+  }
+
+  .modal-nav.prev { left: 10px; }
+  .modal-nav.next { right: 10px; }
+
+  .modal-thumbnails {
+    display: none;
+  }
+
+  .modal-info {
+    margin: 15px 0;
   }
 }
 
