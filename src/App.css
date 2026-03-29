@@ -187,6 +187,22 @@ html, body {
 }
 
 /* Modal Styles */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -200,6 +216,7 @@ html, body {
   z-index: 2000;
   padding: 20px;
   backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
 .modal-content {
@@ -209,6 +226,7 @@ html, body {
   flex-direction: column;
   gap: 20px;
   position: relative;
+  animation: modalZoomIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .modal-close {
