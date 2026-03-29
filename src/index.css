@@ -1,19 +1,6 @@
+@import './styles/variables.css';
+
 :root {
-  /* Natur-inspirierte Farbpalette */
-  --text: #4a453e;
-  --text-h: #2c2925;
-  --bg: #fdfbf7; /* Cremiger Off-white, erinnert an Lehm/Natur */
-  --border: #e8e2d9;
-  --accent: #7d846c; /* Sanftes Salbeigrün */
-  --accent-light: #f1f3ed;
-  --accent-dark: #5a614d;
-  --clay: #d9c5b2; /* Lehm-Farbton */
-  
-  --shadow: rgba(0, 0, 0, 0.05) 0 10px 15px -3px;
-
-    --sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --heading: 'Lora', serif, system-ui;
-
     font: 18px/1.8 var(--sans);
     letter-spacing: 0.02em;
     color-scheme: light;

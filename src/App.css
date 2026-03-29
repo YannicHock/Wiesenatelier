@@ -23,7 +23,7 @@
 .anchor-nav {
   position: sticky;
   top: 0;
-  background: rgba(253, 251, 247, 0.9);
+  background: var(--bg-alpha);
   backdrop-filter: blur(10px);
   padding: 20px 0;
   display: flex;
@@ -56,7 +56,7 @@
 }
 
 .section:nth-of-type(even) {
-  background-color: rgba(0, 0, 0, 0.015);
+  background-color: var(--black-alpha-01);
   width: 100vw;
   position: relative;
   left: 50%;
@@ -163,7 +163,7 @@
 .tile-img:hover {
   transform: translateY(-5px);
   filter: brightness(1.05);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px var(--black-alpha-10);
 }
 
 .tile-img:first-child {
@@ -193,7 +193,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: var(--overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,7 +239,7 @@
 }
 
 .modal-nav {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--white-alpha-10);
   border: none;
   color: white;
   width: 50px;
@@ -254,7 +254,7 @@
 }
 
 .modal-nav:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-alpha-20);
 }
 
 .modal-info {
@@ -405,7 +405,7 @@
   left: 0;
   right: 0;
   padding: 60px 40px 40px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  background: linear-gradient(transparent, var(--black-alpha-70));
   color: white;
   text-align: center;
 }
@@ -426,7 +426,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--white-alpha-20);
   backdrop-filter: blur(5px);
   color: white;
   border: none;
@@ -443,7 +443,7 @@
 }
 
 .carousel-control:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--white-alpha-40);
 }
 
 .carousel-control.prev { left: 20px; }
@@ -463,7 +463,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--white-alpha-50);
   border: none;
   padding: 0;
   cursor: pointer;

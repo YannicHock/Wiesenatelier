@@ -1,0 +1,28 @@
+:root {
+  /* Natur-inspirierte Farbpalette */
+  --text: #4a453e;
+  --text-h: #2c2925;
+  --bg: #fdfbf7; /* Cremiger Off-white, erinnert an Lehm/Natur */
+  --bg-alpha: rgba(253, 251, 247, 0.9);
+  --border: #e8e2d9;
+  --accent: #7d846c; /* Sanftes Salbeigrün */
+  --accent-light: #f1f3ed;
+  --accent-dark: #5a614d;
+  --clay: #d9c5b2; /* Lehm-Farbton */
+  
+  --shadow: rgba(0, 0, 0, 0.05) 0 10px 15px -3px;
+
+  /* Alpha-Transparenzen */
+  --overlay-bg: rgba(0, 0, 0, 0.9);
+  --white-alpha-10: rgba(255, 255, 255, 0.1);
+  --white-alpha-20: rgba(255, 255, 255, 0.2);
+  --white-alpha-40: rgba(255, 255, 255, 0.4);
+  --white-alpha-50: rgba(255, 255, 255, 0.5);
+  --black-alpha-01: rgba(0, 0, 0, 0.015);
+  --black-alpha-10: rgba(0, 0, 0, 0.1);
+  --black-alpha-70: rgba(0, 0, 0, 0.7);
+
+  /* Typografie */
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --heading: 'Lora', serif, system-ui;
+}
