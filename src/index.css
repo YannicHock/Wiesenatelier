@@ -1,0 +1,91 @@
+:root {
+  /* Natur-inspirierte Farbpalette */
+  --text: #4a453e;
+  --text-h: #2c2925;
+  --bg: #fdfbf7; /* Cremiger Off-white, erinnert an Lehm/Natur */
+  --border: #e8e2d9;
+  --accent: #7d846c; /* Sanftes Salbeigrün */
+  --accent-light: #f1f3ed;
+  --accent-dark: #5a614d;
+  --clay: #d9c5b2; /* Lehm-Farbton */
+  
+  --shadow: rgba(0, 0, 0, 0.05) 0 10px 15px -3px;
+
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --heading: 'Lora', serif, system-ui; /* Serif für einen edleren, ruhigeren Vibe */
+
+  font: 18px/1.6 var(--sans);
+  letter-spacing: 0.01em;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+}
+
+h1, h2, h3 {
+  font-family: var(--heading);
+  font-weight: 400;
+  color: var(--text-h);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  margin: 0.5em 0;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  margin: 1.5em 0 0.8em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1.2em 0 0.5em;
+  color: var(--accent-dark);
+}
+
+p {
+  margin-bottom: 1.2em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.placeholder-img {
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-style: italic;
+  border-radius: 4px;
+  min-height: 200px;
+  width: 100%;
+}
