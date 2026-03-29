@@ -10,9 +10,11 @@ import { Location } from './components/Location'
 import { Closing } from './components/Closing'
 import { Footer } from './components/Footer'
 import { GalleryModal } from './components/GalleryModal'
+import { Impressum } from './components/Impressum'
 
 function App() {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
+  const [isImpressumOpen, setIsImpressumOpen] = useState(false)
   const [activeImageIndex, setActiveImageIndex] = useState(0)
 
   const openGallery = (index = 0) => {
@@ -23,6 +25,16 @@ function App() {
 
   const closeGallery = () => {
     setIsGalleryOpen(false)
+    document.body.style.overflow = 'unset'
+  }
+
+  const openImpressum = () => {
+    setIsImpressumOpen(true)
+    document.body.style.overflow = 'hidden'
+  }
+
+  const closeImpressum = () => {
+    setIsImpressumOpen(false)
     document.body.style.overflow = 'unset'
   }
 
@@ -42,7 +54,9 @@ function App() {
         <Closing />
       </main>
 
-      <Footer />
+      <Footer onOpenImpressum={openImpressum} />
+
+      {isImpressumOpen && <Impressum onClose={closeImpressum} />}
 
       {isGalleryOpen && (
         <GalleryModal

@@ -30,7 +30,7 @@ export const GalleryModal = ({
           Bild {activeImageIndex + 1} von {GALLERY_IMAGES.length}
         </div>
         <div className="modal-thumbnails">
-          {GALLERY_IMAGES.map((img, idx) => (
+          {GALLERY_IMAGES.map((_, idx) => (
             <div
               key={idx}
               className={`thumb ${idx === activeImageIndex ? 'active' : ''}`}
