@@ -11,20 +11,25 @@
   
   --shadow: rgba(0, 0, 0, 0.05) 0 10px 15px -3px;
 
-  --sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --heading: 'Lora', serif, system-ui; /* Serif für einen edleren, ruhigeren Vibe */
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --heading: 'Lora', serif, system-ui;
 
-  font: 18px/1.6 var(--sans);
-  letter-spacing: 0.01em;
-  color-scheme: light;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font: 18px/1.6 var(--sans);
+    letter-spacing: 0.01em;
+    color-scheme: light;
+    color: var(--text);
+    background: var(--bg);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
-  @media (max-width: 1024px) {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+@media (max-width: 1024px) {
+  :root {
     font-size: 16px;
   }
 }
@@ -49,6 +54,9 @@ h1, h2, h3 {
   font-weight: 400;
   color: var(--text-h);
   line-height: 1.2;
+  text-wrap: balance;
+  hyphens: none;
+  overflow-wrap: break-word;
 }
 
 h1 {
@@ -59,7 +67,7 @@ h1 {
 
 h2 {
   font-size: clamp(1.8rem, 5vw, 2.8rem);
-  margin: 1.5em 0 0.8em;
+  margin: 0 0 0.8em;
 }
 
 h3 {
@@ -70,6 +78,7 @@ h3 {
 
 p {
   margin-bottom: 1.2em;
+  text-wrap: pretty;
 }
 
 img {

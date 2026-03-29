@@ -6,7 +6,7 @@ function App() {
       <header className="hero-section">
         <div className="hero-content">
           <h1>Wiesenatelier</h1>
-          <p className="hero-subtitle">lichtdurchflutetes Studio im Bliesgau · ruhig & stilvoll</p>
+          <p className="hero-subtitle">lichtdurchflutetes Studio im Bliesgau &middot; ruhig &amp; stilvoll</p>
         </div>
         <div className="placeholder-img hero-placeholder">
           [Hero Bild: Lichtdurchflutetes Studio / Außenansicht]
@@ -25,9 +25,9 @@ function App() {
           <div className="section-content">
             <h2>🌿 Beschreibung</h2>
             <p>
-              Willkommen im <strong>Wiesenatelier</strong> – deinem naturnahen Rückzugsort im idyllischen Dorf Auersmacher.
-              Das lichtdurchflutete Studio verbindet natürliche Materialien mit moderner, reduzierter Gestaltung.
-              Warmer Lehmputz, ausgewählte Einrichtung und großzügige Fenster schaffen eine besondere Atmosphäre:
+              Willkommen im <strong>Wiesenatelier</strong> &ndash; deinem naturnahen R&uuml;ckzugsort im idyllischen Dorf Auersmacher.
+              Das lichtdurchflutete Studio verbindet nat&uuml;rliche Materialien mit moderner, reduzierter Gestaltung.
+              Warmer Lehmputz, ausgew&auml;hlte Einrichtung und gro&szlig;z&uuml;gige Fenster schaffen eine besondere Atmosph&auml;re:
               ruhig, klar und erdend.
             </p>
             <p>
@@ -51,7 +51,7 @@ function App() {
           </div>
         </section>
 
-        <section id="ausstattung" className="section accent-bg">
+        <section id="ausstattung" className="section accent-bg reverse">
           <div className="section-content">
             <h2>🌿 Das erwartet dich</h2>
             <ul className="feature-list">
@@ -92,14 +92,17 @@ function App() {
               </div>
             </div>
           </div>
+          <div className="placeholder-img gallery-large">
+            [Stimmungsbild: Wellness / Achtsamkeit / Aktivität]
+          </div>
         </section>
 
-        <section id="lage" className="section lage-section">
+        <section id="lage" className="section lage-section reverse">
           <div className="section-content">
             <h2>🌍 Perfekte Lage für Entdeckungen</h2>
             <ul className="lage-list">
-              <li>In der Nähe von Saarbrücken (ca. 15 Minuten Fahrtzeit mit dem Auto, 30 Min ÖPNV)</li>
-              <li>Nähe zu Saargemünd / Frankreich (8 Minuten Fahrt mit dem Auto, 10 mit der Bahn)</li>
+              <li>In der N&auml;he von Saarbr&uuml;cken (ca.&nbsp;15&nbsp;Minuten Fahrtzeit mit dem Auto, 30&nbsp;Min &Ouml;PNV)</li>
+              <li>N&auml;he zu Saargem&uuml;nd&nbsp;/&nbsp;Frankreich (8&nbsp;Minuten Fahrt mit dem Auto, 10&nbsp;mit&nbsp;der&nbsp;Bahn)</li>
               <li>Zugang zu Rad- und Wanderwegen</li>
               <li>Direkt im Biosphärenreservat Bliesgau</li>
               <li>Region mit Natur, Kultur und Genuss</li>
